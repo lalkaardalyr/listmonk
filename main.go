@@ -29,7 +29,8 @@ type App struct {
 
 var (
 	// Global logger instance.
-	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lshortfile)
+	// Using log.Lmicroseconds instead of log.Ldate|log.Ltime for more precise timestamps.
+	logger = log.New(os.Stdout, "", log.Lmicroseconds|log.Lshortfile)
 )
 
 func main() {
