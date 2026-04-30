@@ -33,7 +33,9 @@ var (
 	// Added log.Lmsgprefix so that any prefix set via SetPrefix appears before
 	// the message rather than before the date, which is easier to read when
 	// grepping structured log output.
-	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmsgprefix)
+	// Also added log.Lshortfile to show the source file and line number, which
+	// is helpful when debugging issues in development.
+	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmsgprefix|log.Lshortfile)
 )
 
 func main() {
