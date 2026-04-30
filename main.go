@@ -30,8 +30,9 @@ type App struct {
 var (
 	// Global logger instance.
 	// Using log.Ldate|log.Ltime for human-readable timestamps in logs.
-	// Keeping log.Lshortfile for cleaner, more readable log output.
-	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lshortfile)
+	// Removed log.Lshortfile to keep log lines shorter and less noisy
+	// when tailing logs in production.
+	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime)
 )
 
 func main() {
