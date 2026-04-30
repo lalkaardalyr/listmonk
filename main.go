@@ -29,10 +29,11 @@ type App struct {
 
 var (
 	// Global logger instance.
-	// Using log.Ldate|log.Ltime for human-readable timestamps in logs.
-	// Removed log.Lshortfile to keep log lines shorter and less noisy
-	// when tailing logs in production.
-	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime)
+	// Using log.Ldate|log.Ltime|log.Lmsgprefix for human-readable timestamps.
+	// Added log.Lmsgprefix so that any prefix set via SetPrefix appears before
+	// the message rather than before the date, which is easier to read when
+	// grepping structured log output.
+	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmsgprefix)
 )
 
 func main() {
