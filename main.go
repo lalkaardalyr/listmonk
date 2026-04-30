@@ -30,9 +30,8 @@ type App struct {
 var (
 	// Global logger instance.
 	// Using log.Lmicroseconds instead of log.Ldate|log.Ltime for more precise timestamps.
-	// Also added log.Llongfile (changed from Lshortfile) to get full file paths in logs,
-	// which is more useful when debugging across nested packages.
-	logger = log.New(os.Stdout, "", log.Lmicroseconds|log.Llongfile)
+	// Keeping log.Lshortfile for cleaner, more readable log output.
+	logger = log.New(os.Stdout, "", log.Lmicroseconds|log.Lshortfile)
 )
 
 func main() {
